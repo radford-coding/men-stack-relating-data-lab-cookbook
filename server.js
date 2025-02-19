@@ -50,10 +50,8 @@ app.get('/vip-lounge', (req, res) => {
     res.send(`Welcome to the party ${req.session.user.username}.`);
   } else {
     res.send('Sorry, no guests allowed.');
-  }
+  };
 });
-
-app.use('/auth', authController);
 
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`);
