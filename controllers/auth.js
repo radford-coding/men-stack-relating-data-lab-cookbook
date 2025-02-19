@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 
 const User = require('../models/user.js');
 
+
 router.get('/sign-up', (req, res) => {
   res.render('auth/sign-up.ejs');
 });
