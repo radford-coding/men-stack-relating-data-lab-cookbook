@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= recipe.name %></title>
+</head>
+<body>
+    <%- include('../partials/_navbar') %>
+    <h1><%= recipe.name %></h1>
+    <a href="/recipes/<%= recipe._id %>/edit">Edit <%= recipe.name %></a>
+    <br><br>
+    <table>
+        <thead>
+            <th>name</th>
+            <th>instructions</th>
+            <th>ingredients</th>
+        </thead>
+        <tr>
+            <td><%= recipe.name %></td>
+            <td><%= recipe.instructions %></td>
+            <td><%= recipe.ingredients.map(i => i.name) %></td>
+        </tr>
+    </table>
+    <br><br>
+    
+    <form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST">
+        <button type="submit">Delete <%= recipe.name %></button>
+    </form>
+</body>
+</html>
