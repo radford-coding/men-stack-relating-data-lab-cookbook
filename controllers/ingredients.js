@@ -16,7 +16,10 @@ router.post('/', async (req, res) => {
     if (duplicate) {
         res.send(`${duplicate.name} already listed.<br><br><a href="/ingredients">Back</a>`);
         return;
-    }
+    } else if (!req.body.name.match(/^[\w\s]+$/)) {
+        res.send('Ingredient names may only contain alphanumeric characters.<br><br><a href="/ingredients">Back</a>');
+        return;
+    };
     await Ingredient.create(req.body);
     res.redirect('/ingredients');
 });
