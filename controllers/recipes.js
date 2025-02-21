@@ -6,15 +6,12 @@ const Recipe = require('../models/recipe.js');
 const Ingredient = require('../models/ingredient.js');
 
 router.get('/', async (req, res) => {
-    const recipes = await Recipe.find({});
+    const recipes = await Recipe.find({}).sort('name');
     res.render('recipes/index.ejs', { recipes });
-    // const recipes = await Recipe.findById('67b7a1fea44a845679d839e2').populate('ingredients');
-    // console.log(recipes);
-    // res.render('recipes/index.ejs', { recipes: [recipes] });
 });
 
 router.get('/new', async (req, res) => {
-    const ingredients = await Ingredient.find({});
+    const ingredients = await Ingredient.find({}).sort('name');
     res.render('recipes/new.ejs', { ingredients, });
 });
 

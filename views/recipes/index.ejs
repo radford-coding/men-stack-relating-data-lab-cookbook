@@ -1,22 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Recipes</title>
+<%- include('../partials/_htmlhead') %>
+<title>My Recipes</title>
 </head>
+
 <body>
     <%- include('../partials/_navbar') %>
     <h1>recipes index</h1>
-    <table>
-        <thead>
-            <th>name</th>
-        </thead>
+    <ul>
         <% recipes.forEach(recipe => { %>
-            <tr>
-                <td><a href="/recipes/<%= recipe._id %>"><%= recipe.name %></a></td>
-            </tr>
+            <li><a href="/recipes/<%= recipe._id %>"><%= recipe.name %></a></li>
         <% }); %>
-    </table>
+    </ul>
 </body>
+
 </html>
