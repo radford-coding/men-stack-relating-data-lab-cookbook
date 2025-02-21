@@ -8,7 +8,7 @@
 <body>
     <%- include('../partials/_navbar') %>
     <h1>Edit <%= recipe.name %></h1>
-    <form action="/recipes/<%= recipe._id %>?method=PUT" method="POST">
+    <form action="/recipes/<%= recipe._id %>?_method=PUT" method="POST">
         <label for="name">Recipe name:</label>
         <input type="text" name="name" value="<%= recipe.name %>">
         <br><br>
@@ -26,7 +26,7 @@
         </fieldset>
         
         <br><br>
-        <button type="submit">Submit</button>
+        <button type="submit">Update</button>
     </form>
     
 </body>
