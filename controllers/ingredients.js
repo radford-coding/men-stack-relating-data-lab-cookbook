@@ -10,4 +10,15 @@ router.get('/', async (req, res) => {
     res.render('ingredients/index.ejs', { ingredients });
 });
 
+router.post('/', async (req, res) => {
+    req.body.name = req.body.name.charAt(0).toUpperCase() + req.body.name.slice(1).toLowerCase();
+    const duplicate = await Ingredient.findOne({ name: req.body.name });
+    if (duplicate) {
+        res.send(`${duplicate.name} already listed.<br><br><a href="/ingredients">Back</a>`);
+        return;
+    }
+    await Ingredient.create(req.body);
+    res.redirect('/ingredients');
+});
+
 module.exports = router;

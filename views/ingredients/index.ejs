@@ -7,6 +7,12 @@
 </head>
 <body>
     <%- include('../partials/_navbar') %>
+    <h1>Ingredients</h1>
+    <form action="/ingredients" method="POST">
+        <label for="name">New ingredient:</label>
+        <input type="text" name="name">
+        <button type="submit">Add ingredient</button>
+    </form>
     <ul>
         <% ingredients.forEach(ingredient => { %>
             <li><%= ingredient.name %></li>
