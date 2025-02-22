@@ -1,11 +1,16 @@
 <%- include('../partials/_htmlhead') %>
-    <title><%= recipe.name %></title>
+<title><%= recipe.name %></title>
 </head>
+
 <body>
     <%- include('../partials/_navbar') %>
     <h1><%= recipe.name %></h1>
+
+
+    <% if (editPrivilege) { %>
     <a href="/recipes/<%= recipe._id %>/edit">Edit <%= recipe.name %></a>
     <br><br>
+    <% }; %>
     <table>
         <thead>
             <th>name</th>
@@ -19,9 +24,11 @@
         </tr>
     </table>
     <br><br>
-    
+    <% if (editPrivilege) { %>
     <form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST">
         <button type="submit">Delete <%= recipe.name %></button>
     </form>
+    <% }; %>
 </body>
+
 </html>

@@ -1,0 +1,15 @@
+<%- include('../partials/_htmlhead') %>
+<title><%= user.username %></title>
+</head>
+
+<body>
+    <%- include('../partials/_navbar') %>
+    <h1><%= user.username %></h1>
+    <ul>
+        <% recipes.forEach(recipe => { %>
+        <li><a href="/recipes/<%= recipe._id %>"><%= recipe.name %></a></li>
+        <% }); %>
+    </ul>
+</body>
+
+</html>

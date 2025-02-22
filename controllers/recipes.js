@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
-const User = require('../models/user.js');
+// const User = require('../models/user.js');
 const Recipe = require('../models/recipe.js');
 const Ingredient = require('../models/ingredient.js');
 
 router.get('/', async (req, res) => {
-    const recipes = await Recipe.find({}).sort('name');
+    const recipes = await Recipe.find({ owner: req.session.user._id }).sort('name');
     res.render('recipes/index.ejs', { recipes });
 });
 
@@ -28,8 +28,10 @@ router.post('/', async (req, res) => {
 
 router.get('/:recipeID', async (req, res) => {
     const recipe = await Recipe.findById(req.params.recipeID).populate('ingredients');
-    console.log('here');
-    res.render('recipes/show.ejs', { recipe });
+    const editPrivilege = req.session.user._id === recipe.owner;
+    // console.log(`session: ${req.session.user._id}`);
+    // console.log(`recipe: ${recipe.owner}`);
+    res.render('recipes/show.ejs', { recipe, editPrivilege, });
 });
 
 router.delete('/:recipeID', async (req, res) => {
