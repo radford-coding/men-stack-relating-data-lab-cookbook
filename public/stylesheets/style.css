@@ -10,28 +10,69 @@ body {
     font-family: 'Poppins', sans-serif;
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    width: 100vw;
-    background-color: antiquewhite;
     padding: 1vmin;
+    background-image: url('https://getsidedish.com/cdn/shop/files/SideDishJuly231229591_1_868b70f7-22a1-4d18-a172-034a9e5b3dc7.jpg?v=1699490030');
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    width: 100vw;
+    --yellow: #FFDF46;
+    --white: #DFE3EC;
+    --black: #252123;
+    color: var(--black);
 }
 
 nav {
     display: flex;
     justify-content: flex-start;
+    padding: 1vmin 2vmin;
+    align-items: center;
 }
 
-nav > * {
-    margin: 0 2vmin;
+nav a {
+    margin: 0 1vmin;
+    padding: 1vmin 2vmin;
+    background-color: var(--yellow);
+    color: var(--black);
+    border-radius: 10%;
+    text-decoration: none;
+    box-shadow: 3px 3px 5px var(--black);
+}
+
+button {
+    margin: 0 1vmin;
+    padding: 1vmin 2vmin;
+    background-color: var(--yellow);
+    color: var(--black);
+    border-radius: 10%;
+    box-shadow: 3px 3px 5px var(--black);
+}
+
+nav a:hover {
+    background-color: var(--black);
+    color: var(--yellow);
 }
 
 .nav-right {
     margin-left: auto;
 }
 
-input, textarea, button {
+form {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: var(--white);
+    padding: 2vmin;
+    border-radius: 3%;
+}
+
+form * {
+    padding: 5px;
+}
+
+input,
+textarea {
     font-family: 'Poppins', sans-serif;
     padding: 3px;
+    background-color: var(--white);
 }
 
 textarea {
@@ -41,4 +82,12 @@ textarea {
 
 label textarea {
     vertical-align: middle;
+}
+
+.index-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }

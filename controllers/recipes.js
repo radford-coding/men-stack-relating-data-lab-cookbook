@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-// const User = require('../models/user.js');
 const Recipe = require('../models/recipe.js');
 const Ingredient = require('../models/ingredient.js');
 
@@ -17,7 +16,7 @@ router.get('/new', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
-        req.body.owner = req.session.user._id; // use ID for referenced documents
+        req.body.owner = req.session.user._id;
         await Recipe.create(req.body);
         res.redirect('/recipes');
     } catch (err) {
@@ -29,8 +28,6 @@ router.post('/', async (req, res) => {
 router.get('/:recipeID', async (req, res) => {
     const recipe = await Recipe.findById(req.params.recipeID).populate('ingredients');
     const editPrivilege = req.session.user._id === recipe.owner;
-    // console.log(`session: ${req.session.user._id}`);
-    // console.log(`recipe: ${recipe.owner}`);
     res.render('recipes/show.ejs', { recipe, editPrivilege, });
 });
 
