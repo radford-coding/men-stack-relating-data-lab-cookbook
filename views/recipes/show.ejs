@@ -5,24 +5,24 @@
 <body>
     <%- include('../partials/_navbar') %>
     <h1><%= recipe.name %></h1>
-
+    <h2>by <%= recipe.owner.username %></h2>
+    <br>
 
     <% if (editPrivilege) { %>
-    <a href="/recipes/<%= recipe._id %>/edit">Edit <%= recipe.name %></a>
+    <a href="/recipes/<%= recipe._id %>/edit"><input type="button" value="Edit <%= recipe.name %>"></a>
     <br><br>
     <% }; %>
-    <table>
-        <thead>
-            <th>name</th>
-            <th>instructions</th>
-            <th>ingredients</th>
-        </thead>
-        <tr>
-            <td><%= recipe.name %></td>
-            <td><%= recipe.instructions %></td>
-            <td><%= recipe.ingredients.map(i => ' ' + i.name) %></td>
-        </tr>
-    </table>
+    <ul>
+        <li>Ingredients:
+            <ul>
+                <% recipe.ingredients.forEach(ingredient => { %>
+                    <li><%= ingredient.name %></li>
+                <% }); %>
+            </ul>
+        </li>
+        <li>Instructions: <%= recipe.instructions %></li>
+    </ul>
+
     <br><br>
     <% if (editPrivilege) { %>
     <form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST">

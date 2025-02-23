@@ -26,8 +26,10 @@ router.post('/', async (req, res) => {
 });
 
 router.get('/:recipeID', async (req, res) => {
-    const recipe = await Recipe.findById(req.params.recipeID).populate('ingredients');
-    const editPrivilege = req.session.user._id === recipe.owner;
+    const recipe = await Recipe.findById(req.params.recipeID).populate('ingredients owner');
+    const editPrivilege = req.session.user._id == recipe.owner._id;
+    //! I honestly do not know why == works but === doesn't work here. They should be the same. Dear JS gods why
+    // console.log(`session: ${req.session.user._id}\nowner:   ${recipe.owner._id}`);
     res.render('recipes/show.ejs', { recipe, editPrivilege, });
 });
 

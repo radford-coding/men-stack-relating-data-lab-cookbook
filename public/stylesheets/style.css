@@ -39,16 +39,27 @@ nav a {
     box-shadow: 3px 3px 5px var(--black);
 }
 
+input[type="button"],
 button {
-    margin: 0 1vmin;
+    margin: 1vmin;
     padding: 1vmin 2vmin;
     background-color: var(--yellow);
     color: var(--black);
     border-radius: 10%;
     box-shadow: 3px 3px 5px var(--black);
+    font-family: 'Poppins', sans-serif;
+    transition: 0.2s;
+    font-weight: bold;
+}
+
+input[type="button"]:hover,
+button:hover {
+    box-shadow: 5px 5px 5px var(--black);
+    cursor: pointer;
 }
 
 nav a:hover {
+    box-shadow: 5px 5px 5px var(--black);
     background-color: var(--black);
     color: var(--yellow);
 }
@@ -57,15 +68,32 @@ nav a:hover {
     margin-left: auto;
 }
 
-form {
+form,
+ul {
     background-color: rgba(0, 0, 0, 0.8);
     color: var(--white);
     padding: 2vmin;
-    border-radius: 3%;
+    border-radius: 2vmin;
+}
+
+ul ul {
+    background-color: rgba(0,0,0,0);
 }
 
 form * {
     padding: 5px;
+}
+
+li {
+    margin: 1vmin;
+}
+
+li a {
+    color: var(--white);
+}
+
+li a:hover {
+    font-weight: bold;
 }
 
 input,
